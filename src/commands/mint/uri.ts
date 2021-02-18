@@ -3,13 +3,14 @@ import {
   constructMediaData,
   Zora,
   sha256FromBuffer,
-  constructBidShares
+  constructBidShares,
+  isMediaDataVerified
 } from '@zoralabs/zdk'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Wallet } from 'ethers'
 import axios from 'axios'
 
-export class MintOptions extends Options {
+export class MintURIOptions extends Options {
   @option({
     flag: 'r',
     required: true,
@@ -78,11 +79,11 @@ export class MintOptions extends Options {
 
 @command({
   description:
-    'This command will mint a new zNFT on the Zora Protocol. Use `zora mint --help` for more.'
+    'This command will mint a new zNFT on the Zora Protocol from an existing contentURI and metadataURI. Type `zora mint uri --help` for more.'
 })
 export default class extends Command {
   @metadata
-  async execute(options: MintOptions) {
+  async execute(options: MintURIOptions) {
     const provider = new JsonRpcProvider(options.rpcURL, options.chainId)
     await provider.ready
 
@@ -119,15 +120,23 @@ export default class extends Command {
       contentHash,
       metadataHash
     )
+
     const bidShares = constructBidShares(
       options.creatorShare,
       100 - options.creatorShare,
       0
     )
+
+    const verified = await isMediaDataVerified(mediaData, options.timeout)
+
+    if (!verified){
+      throw new Error("MediaData is not verified")
+    }
+
     const tx = await zora.mint(mediaData, bidShares)
 
     console.log(
-      `\n\n\tSuccessfully submitted Mint Transaction to the Zora Media Contract. \n\tContract Address: ${zora.mediaAddress}. \n\tChainId ${options.chainId}. \n\tTransaction Hash: ${tx.hash}.`
+      `\n\nSuccessfully submitted Mint Transaction to the Zora Media Contract. \nContract Address: ${zora.mediaAddress}. \nChainId ${options.chainId}. \nTransaction Hash: ${tx.hash}.`
     )
   }
 }

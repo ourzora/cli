@@ -6,3 +6,4 @@ export function run() {
   let shim = new Shim(cli)
   shim.execute(process.argv)
 }
+

@@ -1,6 +1,6 @@
 {
   "name": "@zoralabs/cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a cli tool to interact with the Zora Protocol",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

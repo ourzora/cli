@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "a cli tool to interact with the Zora Protocol",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "bin": {
     "zora": "bin/zora"
   },

@@ -7,11 +7,8 @@
     "zora": "bin/zora"
   },
   "scripts": {
-    "test": "jest",
     "clean": "rm -rf dist",
-    "build": "yarn clean && tsc",
-    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "local": "sudo yarn global add && zora"
+    "build": "yarn clean && tsc"
   },
   "repository": "git@github.com:ourzora/cli.git",
   "author": "Zora",
@@ -20,7 +17,8 @@
   "devDependencies": {
     "@types/node": "^14.14.28",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
+    "typescript": "^4.1.5",
+    "nodemon": "^2.0.7"
   },
   "dependencies": {
     "@types/clear": "^0.1.1",
@@ -30,9 +28,7 @@
     "chalk": "^4.1.0",
     "clear": "^0.1.0",
     "clime": "^0.5.14",
-    "commander": "^7.1.0",
     "figlet": "^1.5.0",
-    "nodemon": "^2.0.7",
     "path": "^0.12.7",
     "tslib": "^2.1.0"
   }

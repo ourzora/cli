@@ -1,5 +1,7 @@
 # zora-cli
 
+`zora-cli` is a cli tool for interacting with the Zora Protocol on the ethereum blockchain.
+
 ## usage
 
 ```
@@ -53,3 +55,7 @@ zora mint uri --rpc-url <infura or alchemy node> \
 #### file 
 
 Coming Soon.
+
+## Feature Requests
+
+For feature requests please create github issues or post for discussion in our discord at https://zora.community.

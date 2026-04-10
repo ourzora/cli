@@ -10,4 +10,4 @@ Visit **[cli.zora.com](https://cli.zora.com/)** for documentation and installati
 
 ## Source
 
-The source code now lives in the [zora-protocol](https://github.com/ourzora/zora-protocol-private/tree/main/packages/cli) monorepo.
+The source code now lives in the [zora-protocol](https://github.com/ourzora/zora-protocol/tree/main/packages/cli) monorepo.
